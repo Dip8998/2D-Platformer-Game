@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
        
         if(vSpeed > 0)
         {
-            //Jump Animation
+            animator.SetTrigger("Jumping");
         }
 
         // Horizontal Input
