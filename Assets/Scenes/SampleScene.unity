@@ -130,6 +130,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 176027517}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &71138664 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7153253635362283599, guid: 065328b178253c44b93b50701dba9d69,
+    type: 3}
+  m_PrefabInstance: {fileID: 176027517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &71138667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,6 +208,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &71138669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71138663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80def263a9ef7af4f80f9d3ebd064cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 71138664}
 --- !u!1001 &176027517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,6 +296,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 71138667}
+    - targetCorrespondingSourceObject: {fileID: 4263869916067332250, guid: 065328b178253c44b93b50701dba9d69,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 71138669}
   m_SourcePrefab: {fileID: 100100000, guid: 065328b178253c44b93b50701dba9d69, type: 3}
 --- !u!1 &519420028
 GameObject:
