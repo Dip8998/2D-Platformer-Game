@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
+    public float speed;
+    public float jump;
     private BoxCollider2D playerCollider;
     private Vector2 originalColliderSize, crouchingColliderSize;
     private Vector2 originalColliderOffset, crouchingColliderOffset;
 
 
 
-    private void Start()
+    private void Awake()
     {
         playerCollider = GetComponent<BoxCollider2D>();
         originalColliderSize = playerCollider.size;
@@ -23,26 +26,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Crouching();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            StandUp();
-        }
-
         // Vertical Input
-        float vSpeed = Input.GetAxisRaw("Vertical");
-       
-        if(vSpeed > 0)
-        {
-            animator.SetTrigger("Jumping");
-        }
-
+        float vSpeed = Input.GetAxisRaw("Jump");
         // Horizontal Input
         float hSpeed = Input.GetAxisRaw("Horizontal");
 
+        PlayerMovement(hSpeed,vSpeed);
+        PlayerAnimation(hSpeed, vSpeed);
+    }
+
+    private void PlayerMovement(float hSpeed, float vSpeed)
+    { 
+         Vector2 position = transform.position;
+         position.x += hSpeed * speed * Time.deltaTime;
+        transform.position = position;
+    }
+
+    private void PlayerAnimation(float hSpeed, float vSpeed)
+    {
         animator.SetFloat("RunSpeed", Mathf.Abs(hSpeed));
 
         Vector2 scale = transform.localScale;
@@ -51,11 +52,30 @@ public class PlayerController : MonoBehaviour
         {
             scale.x = -1f * Mathf.Abs(scale.x);
         }
-        else if(hSpeed > 0)
+        else if (hSpeed > 0)
         {
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
+
+
+        if (vSpeed > 0)
+        {
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Crouching();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            StandUp();
+        }
     }
 
     void Crouching()
