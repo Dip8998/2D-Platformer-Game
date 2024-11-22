@@ -33,8 +33,10 @@ public class PlayerController : MonoBehaviour
 
         float hSpeed = Input.GetAxisRaw("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
-
-        PlayerMovement(hSpeed, jump);
+        if(isGrounded)
+        {
+            PlayerMovement(hSpeed, jump);
+        }
         PlayerAnimation(hSpeed);
     }
 
@@ -50,38 +52,44 @@ public class PlayerController : MonoBehaviour
         velocity.x = hSpeed * speed;
         rb.velocity = velocity;
 
-        if (jump && isGrounded)
+        if (jump)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
         }
+
     }
 
     private void PlayerAnimation(float hSpeed)
     {
-        animator.SetFloat("RunSpeed", Mathf.Abs(hSpeed));
+        if(isGrounded)
+        {
+            animator.SetFloat("RunSpeed", Mathf.Abs(hSpeed));
 
-        Vector2 scale = transform.localScale;
-        if (hSpeed < 0)
-        {
-            scale.x = -Mathf.Abs(scale.x);
-        }
-        else if (hSpeed > 0)
-        {
-            scale.x = Mathf.Abs(scale.x);
-        }
-        transform.localScale = scale;
+            Vector2 scale = transform.localScale;
+            if (hSpeed < 0)
+            {
+                scale.x = -Mathf.Abs(scale.x);
+            }
+            else if (hSpeed > 0)
+            {
+                scale.x = Mathf.Abs(scale.x);
+            }
+            transform.localScale = scale;
 
-       
-        animator.SetBool("Jump", !isGrounded);
+            if (Input.GetKeyDown(KeyCode.RightControl))
+            {
+                Crouching();
+            }
+            else if (Input.GetKeyUp(KeyCode.RightControl))
+            {
+                StandUp();
+            }
+        }
 
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            Crouching();
-        }
-        else if (Input.GetKeyUp(KeyCode.RightControl))
-        {
-            StandUp();
-        }
+         animator.SetBool("Jump", !isGrounded);
+
+        
+
     }
     private void Crouching()
     {
