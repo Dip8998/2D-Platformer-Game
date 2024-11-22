@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 originalColliderSize, crouchingColliderSize;
     private Vector2 originalColliderOffset, crouchingColliderOffset;
     private bool isGrounded;
+    private int jumpCount = 0;
+    private int maxJumps = 2;
 
     private void Awake()
     {
@@ -31,12 +33,15 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+
         float hSpeed = Input.GetAxisRaw("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
-        if(isGrounded)
-        {
-            PlayerMovement(hSpeed, jump);
-        }
+
+        PlayerMovement(hSpeed, jump);
         PlayerAnimation(hSpeed);
     }
 
@@ -46,24 +51,41 @@ public class PlayerController : MonoBehaviour
         {
             hSpeed = 0; 
             jump = false;
+          
         }
 
         Vector2 velocity = rb.velocity;
         velocity.x = hSpeed * speed;
         rb.velocity = velocity;
 
-        if (jump)
+        if (jump && jumpCount < maxJumps)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCount++;
+
+            if(jumpCount == 0)
+            {
+                animator.SetBool("Jump",true);
+                animator.SetBool("DoubleJump", false);
+
+            }
+            else if(jumpCount == 1)
+            {
+                Debug.Log("DoubleJump is pressed");
+                animator.SetBool("Jump", false);
+                animator.SetBool("DoubleJump", true);
+
+            }
         }
+
 
     }
 
     private void PlayerAnimation(float hSpeed)
     {
-        if(isGrounded)
-        {
-            animator.SetFloat("RunSpeed", Mathf.Abs(hSpeed));
+        
+        animator.SetFloat("RunSpeed", Mathf.Abs(hSpeed));
 
             Vector2 scale = transform.localScale;
             if (hSpeed < 0)
@@ -84,12 +106,12 @@ public class PlayerController : MonoBehaviour
             {
                 StandUp();
             }
+        animator.SetBool("Jump", !isGrounded);
+
+        if (isGrounded)
+        { 
+            animator.SetBool("DoubleJump", false);
         }
-
-         animator.SetBool("Jump", !isGrounded);
-
-        
-
     }
     private void Crouching()
     {
