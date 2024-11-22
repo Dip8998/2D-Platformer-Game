@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         originalColliderSize = playerCollider.size;
         originalColliderOffset = playerCollider.offset;
         crouchingColliderSize = new Vector2(originalColliderSize.x, originalColliderSize.y / 2);
-        crouchingColliderOffset = new Vector2(originalColliderOffset.x, originalColliderOffset.y/2);
+        crouchingColliderOffset = new Vector2(originalColliderOffset.x, originalColliderOffset.y / 2);
     }
 
     void Update()
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         float hSpeed = Input.GetAxisRaw("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
 
-        
         PlayerMovement(hSpeed, jump);
         PlayerAnimation(hSpeed);
     }
