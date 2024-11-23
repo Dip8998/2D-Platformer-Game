@@ -1,20 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public ScoreController scoreController;
     public Animator animator;
     public float speed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck; 
     public float groundCheckRadius = 0.2f; 
-    public LayerMask groundLayer; 
+    public LayerMask groundLayer;
+   
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
     private Vector2 originalColliderSize, crouchingColliderSize;
     private Vector2 originalColliderOffset, crouchingColliderOffset;
+
     private bool isGrounded;
     private int jumpCount = 0;
     private int maxJumps = 2;
@@ -28,7 +32,6 @@ public class PlayerController : MonoBehaviour
         crouchingColliderSize = new Vector2(originalColliderSize.x, originalColliderSize.y / 2);
         crouchingColliderOffset = new Vector2(originalColliderOffset.x, originalColliderOffset.y / 2);
     }
-
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -44,14 +47,12 @@ public class PlayerController : MonoBehaviour
         PlayerMovement(hSpeed, jump);
         PlayerAnimation(hSpeed);
     }
-
     private void PlayerMovement(float hSpeed, bool jump)
     {
         if (animator.GetBool("Crouching"))
         {
             hSpeed = 0; 
             jump = false;
-          
         }
 
         Vector2 velocity = rb.velocity;
@@ -64,13 +65,13 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
 
-            if(jumpCount == 0)
+            if(jumpCount == 1)
             {
                 animator.SetBool("Jump",true);
                 animator.SetBool("DoubleJump", false);
 
             }
-            else if(jumpCount == 1)
+            else if(jumpCount == 2)
             {
                 Debug.Log("DoubleJump is pressed");
                 animator.SetBool("Jump", false);
@@ -78,10 +79,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-
-
     }
-
     private void PlayerAnimation(float hSpeed)
     {
         
@@ -106,6 +104,7 @@ public class PlayerController : MonoBehaviour
             {
                 StandUp();
             }
+
         animator.SetBool("Jump", !isGrounded);
 
         if (isGrounded)
@@ -119,7 +118,6 @@ public class PlayerController : MonoBehaviour
         playerCollider.size = crouchingColliderSize;
         playerCollider.offset = crouchingColliderOffset;
     }
-
     private void StandUp()
     {
         animator.SetBool("Crouching", false);
@@ -130,5 +128,11 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    public void PickUpKey()
+    {
+        Debug.Log("You picked up a key!");
+        scoreController.IncreaseScore(10);
     }
 }
