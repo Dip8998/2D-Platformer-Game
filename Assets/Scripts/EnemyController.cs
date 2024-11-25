@@ -28,4 +28,14 @@ public class EnemyController : MonoBehaviour
             transform.localScale = scale;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<PlayerController>())
+        {
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.ReduceHealth();
+        }
+
+    }
 }
