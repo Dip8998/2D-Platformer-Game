@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     private int jumpCount = 0;
-    private int maxJumps = 2;
+    private int maxJumps = 1;
 
     private void Awake()
     {
@@ -65,18 +65,17 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
 
-            if(jumpCount == 1)
+            if(jumpCount == 0)
             {
                 animator.SetBool("Jump",true);
                 animator.SetBool("DoubleJump", false);
 
             }
-            else if(jumpCount == 2)
+            else if(jumpCount == 1)
             {
                 Debug.Log("DoubleJump is pressed");
-                animator.SetBool("Jump", false);
                 animator.SetBool("DoubleJump", true);
-
+                animator.SetBool("Jump", false);
             }
         }
     }
