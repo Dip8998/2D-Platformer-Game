@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
         if(Vector2.Distance(transform.position, targetPoint.position) < 0.1f)
         {
-            targetPoint = targetPoint == pointA ? pointB : pointA;
+            targetPoint = ((targetPoint == pointA) ? pointB : pointA);
 
             Vector3 scale = transform.localScale;
             scale.x *= -1;

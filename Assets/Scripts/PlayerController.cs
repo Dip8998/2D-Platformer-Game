@@ -148,7 +148,9 @@ public class PlayerController : MonoBehaviour
             {
                 healthImages[i].enabled = i < health;
             }
+
             animator.SetTrigger("PlayerHurt");
+
             if(health <= 0)
             {
                 PlayerDie();
