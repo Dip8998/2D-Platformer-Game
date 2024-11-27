@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public ScoreController scoreController;
+    public GameOverController gameOverController;
     public Animator animator;
     public float speed = 5f;
     public float jumpForce = 10f;
@@ -148,7 +149,9 @@ public class PlayerController : MonoBehaviour
             {
                 healthImages[i].enabled = i < health;
             }
+
             animator.SetTrigger("PlayerHurt");
+
             if(health <= 0)
             {
                 PlayerDie();
@@ -159,6 +162,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerDie()
     {
         animator.SetTrigger("PlayerDied");
+        this.enabled = false;
         
         StartCoroutine(GameOver());
     }
@@ -168,6 +172,6 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         Debug.Log("Game Over");
-        SceneManager.LoadScene(0);
+        gameOverController.ActivateScreen();
     }
 }
