@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
 {
     public Button playButton;
     public Button quitButton;
+    public GameObject levelScreen;
 
     public void Awake()
     {
@@ -16,7 +17,7 @@ public class MenuController : MonoBehaviour
     }
     private void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        levelScreen.SetActive(true);
     }
     private void Quit()
     {
