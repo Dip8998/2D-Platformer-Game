@@ -23,6 +23,6 @@ public class ScoreController : MonoBehaviour
 
     private void ResetUI()
     {
-        scoreText.text = "Score : " + score;
+        scoreText.text = " : " + score;
     }
 }

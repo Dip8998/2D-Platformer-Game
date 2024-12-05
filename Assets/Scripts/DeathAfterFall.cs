@@ -12,6 +12,7 @@ public class DeathAfterFall : MonoBehaviour
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.PlayerDie();
+
         }
     }
 }
