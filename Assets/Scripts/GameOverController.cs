@@ -19,6 +19,8 @@ public class GameOverController : MonoBehaviour
     public void ActivateScreen()
     {
         gameObject.SetActive(true);
+        SoundController.Instance.Play(SoundController.Sounds.GameOver);
+
     }
     private void RestartLevel()
     {

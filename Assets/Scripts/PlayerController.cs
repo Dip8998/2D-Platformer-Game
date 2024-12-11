@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.75f);
         Debug.Log("Game Over");
         gameOverController.ActivateScreen();
     }

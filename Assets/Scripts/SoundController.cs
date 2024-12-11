@@ -105,7 +105,8 @@ public class SoundController : MonoBehaviour
         PlayerHurt,
         KeyPickUp,
         HealthPickup,
-        LevelComplete
+        LevelComplete,
+        GameOver
         
     }
 }
