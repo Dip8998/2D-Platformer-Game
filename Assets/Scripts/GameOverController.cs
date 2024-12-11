@@ -9,7 +9,7 @@ public class GameOverController : MonoBehaviour
     public Button restartButton;
     public Button mainMenuButton;
     public Button quitButton;
-    
+  
     private void Awake()
     {
         restartButton.onClick.AddListener(RestartLevel);
@@ -24,13 +24,16 @@ public class GameOverController : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex);
+        SoundController.Instance.Play(SoundController.Sounds.StartButtonClick);
     }
     private void MainMenu()
     {
+        SoundController.Instance.Play(SoundController.Sounds.BackButtonClick);
         SceneManager.LoadScene(0);
     }
     private void Quit()
     {
+        SoundController.Instance.Play(SoundController.Sounds.BackButtonClick);
         Application.Quit();
     }
 }

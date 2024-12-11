@@ -11,7 +11,8 @@ public class DeathAfterFall : MonoBehaviour
         if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
-            playerController.PlayerDie();
+            SoundController.Instance.Play(SoundController.Sounds.PlayerHurt);
+            playerController.ReduceHealth(true);
 
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,29 @@ using UnityEngine;
 public class LevelOverController : MonoBehaviour
 {
     public GameObject winScreen;
+    public GameObject collectedKeysMessage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<PlayerController>()  != null)
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        if (player != null)
         {
-            Debug.Log("Level is completed");
-            LevelManager.Instance.MarkCurrentLevelComplete();
-            winScreen.SetActive(true);
+            if(player.currentKeyCount >= player.requiredKeyCount)
+            {
+                Debug.Log("Level is completed");
+                LevelManager.Instance.MarkCurrentLevelComplete();
+                SoundController.Instance.Play(SoundController.Sounds.LevelComplete);
+                winScreen.SetActive(true);
+            }
+            else
+            {
+                collectedKeysMessage.SetActive(true);
+                StartCoroutine(HideMessage());
+            }
         }
+    }
+    private IEnumerator HideMessage()
+    {
+        yield return new WaitForSeconds(1.5f); 
+        collectedKeysMessage.SetActive(false);
     }
 }
