@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
 
-            if (jumpCount == 0)
+            if(jumpCount == 0)
             {
                 animator.SetBool("Jump",true);
                 animator.SetBool("DoubleJump", false);
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("DoubleJump", true);
                 animator.SetBool("Jump", false);
             }
-            
         }
     }
     private void PlayerAnimation(float hSpeed)
@@ -160,7 +159,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PlayerDie()
+    private void PlayerDie()
     {
         animator.SetTrigger("PlayerDied");
         this.enabled = false;

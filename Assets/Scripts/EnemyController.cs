@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        if (collision.gameObject.GetComponent<PlayerController>())
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.ReduceHealth();
