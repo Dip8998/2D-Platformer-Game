@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck; 
     public float groundCheckRadius = 0.2f; 
     public LayerMask groundLayer;
-   
+    public Image[] healthImages;
+    public int health = 3;
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     private int jumpCount = 0;
-    private int maxJumps = 2;
+    private int maxJumps = 1;
 
     private void Awake()
     {
@@ -65,18 +68,17 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpCount++;
 
-            if(jumpCount == 1)
+            if(jumpCount == 0)
             {
                 animator.SetBool("Jump",true);
                 animator.SetBool("DoubleJump", false);
 
             }
-            else if(jumpCount == 2)
+            else if(jumpCount == 1)
             {
                 Debug.Log("DoubleJump is pressed");
-                animator.SetBool("Jump", false);
                 animator.SetBool("DoubleJump", true);
-
+                animator.SetBool("Jump", false);
             }
         }
     }
@@ -134,5 +136,38 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("You picked up a key!");
         scoreController.IncreaseScore(10);
+    }
+
+    public void ReduceHealth()
+    {
+        if(health > 0)
+        {
+            health--;
+
+            for(int i = 0; i < healthImages.Length; i++)
+            {
+                healthImages[i].enabled = i < health;
+            }
+            animator.SetTrigger("PlayerHurt");
+            if(health <= 0)
+            {
+                PlayerDie();
+            }
+        }
+    }
+
+    private void PlayerDie()
+    {
+        animator.SetTrigger("PlayerDied");
+        
+        StartCoroutine(GameOver());
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Debug.Log("Game Over");
+        SceneManager.LoadScene(0);
     }
 }
