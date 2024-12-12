@@ -6,22 +6,24 @@ using UnityEngine.UI;
 
 public class GameWinController : MonoBehaviour
 {
-    public Button restartButton;
-    public Button nextLevelButton;
+    public Button mainMenu;
+    public Button quit;
 
     private void Awake()
     {
-        restartButton.onClick.AddListener(RestartLevel);
-        nextLevelButton.onClick.AddListener(NextLevel);
+        mainMenu.onClick.AddListener(MainMenu);
+        quit.onClick.AddListener(Quit); 
+    }
 
-    }
-    private void RestartLevel()
+    private void MainMenu()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
+        SoundController.Instance.Play(SoundController.Sounds.BackButtonClick);
+        SceneManager.LoadScene(0);
     }
-    private void NextLevel()
+    private void Quit()
     {
-        LevelManager.Instance.LoadNextScene();
+        SoundController.Instance.Play(SoundController.Sounds.BackButtonClick);
+        Application.Quit();
     }
+
 }

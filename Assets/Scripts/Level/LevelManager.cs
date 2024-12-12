@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public string[] levels;
+    public int[] keysPerLevel;
     private static LevelManager instance;
     public static LevelManager Instance { get { return instance; } }
 
@@ -23,9 +24,16 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if (GetLevelStatus(levels[0]) == LevelStatus.Locked || GetLevelStatus(levels[0]) == LevelStatus.Completed)
-        {
-            SetLevelStatus(levels[0], LevelStatus.Unlocked);
+        for(int i = 0; i < levels.Length; i++)
+    {
+            if (i == 0)
+            {
+                SetLevelStatus(levels[i], LevelStatus.Unlocked); // Unlock Level 1
+            }
+            else
+            {
+                SetLevelStatus(levels[i], LevelStatus.Locked); // Lock other levels
+            }
         }
     }
 
@@ -37,11 +45,17 @@ public class LevelManager : MonoBehaviour
 
         int currentSceneIndex = Array.FindIndex(levels, level => level == currentScene.name);
         int nextSceneIndex = currentSceneIndex + 1;
-        if(nextSceneIndex < levels.Length)
+
+        if (nextSceneIndex < levels.Length)
         {
-            SetLevelStatus(levels[nextSceneIndex], LevelStatus.Unlocked);
+            LevelStatus nextLevelStatus = GetLevelStatus(levels[nextSceneIndex]);
+            if (nextLevelStatus == LevelStatus.Locked) 
+            {
+                SetLevelStatus(levels[nextSceneIndex], LevelStatus.Unlocked);
+            }
         }
     }
+
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -62,7 +76,22 @@ public class LevelManager : MonoBehaviour
     public void  SetLevelStatus(string level, LevelStatus status)
     {
         PlayerPrefs.SetInt(level, (int)status);
+        PlayerPrefs.Save();
         Debug.Log("Level number " + level + " level status " + status);
     }
+    private void SetRequiredKeysForCurrentLevel()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        int currentSceneIndex = Array.FindIndex(levels, level => level == currentScene.name);
 
+        if(currentSceneIndex >= 0 && currentSceneIndex < keysPerLevel.Length)
+        {
+            PlayerController player = FindAnyObjectByType<PlayerController>();
+            if (player != null) 
+            {
+                player.requiredKeyCount = keysPerLevel[currentSceneIndex];
+            }
+        }
+    }
+   
 }

@@ -25,7 +25,8 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 33153
+
+>>>>>>> Feature9-LevelSetup
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,7 +152,8 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 33079
+
+>>>>>>> Feature9-LevelSetup
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,7 +164,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+
+>>>>>>> Feature9-LevelSetup
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -171,16 +174,15 @@ MonoBehaviour:
     y: 0
     width: 887.2
     height: 329.6
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 6}
+
+>>>>>>> Feature9-LevelSetup
   m_Panes:
   - {fileID: 5}
   - {fileID: 6}
   - {fileID: 7}
   - {fileID: 8}
-  m_Selected: 1
-  m_LastSelected: 0
+
+>>>>>>> Feature9-LevelSetup
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -767,6 +769,8 @@ MonoBehaviour:
     - {fileID: -3367883278966818417, guid: 15e130401ca5a844cb67c257b7e46326, type: 2}
     - {fileID: 1107565619549418476, guid: ec2972291e5a72f49a63d6deb3cd25fc, type: 2}
     - {fileID: 1107659193052314662, guid: 302a6125f70168e44b84201f2dcab09d, type: 2}
+
+>>>>>>> Feature9-LevelSetup
     m_ValueSerializationHelper:
     - e00: 0.70852166
       e01: 0
@@ -824,6 +828,8 @@ MonoBehaviour:
       e11: 0.70526314
       e12: 0
       e13: 45.231583
+
+>>>>>>> Feature9-LevelSetup
       e20: 0
       e21: 0
       e22: 1
@@ -835,7 +841,8 @@ MonoBehaviour:
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: d20ebc2467e51314f81379887fce3faf,
     type: 2}
-  m_BreadCrumbs: []
+
+>>>>>>> Feature9-LevelSetup
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -866,8 +873,8 @@ MonoBehaviour:
     y: 329.6
     width: 887.2
     height: 393.19998
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+
+>>>>>>> Feature9-LevelSetup
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -936,7 +943,8 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 33125
+
+>>>>>>> Feature9-LevelSetup
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1004,7 +1012,8 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2c48feff8e49feffea4afeffde4bfeff184cfeffc24cfeff624dfeffae4dfeff3e4ffeffbe53feff5255feffd057feff7c5bfeff045efeffd667feff9e6bfeff446efeff107bfeff307dfefff881feff6482feff348afeffda8dfeffac90feff8e91feff2e93feff4095feffe096feff2a97feffca98feff1499feff609afeffa09dfeff38a5feffeac7feffccc9fefffecbfeffe6cdfeffb6cffeffdad0fefffed1feffd8d5feffd0d7feffe6d8feff72dbfeffbcdbfeffe2defefff8dffeff3ce1fefffee5feff2ce7feff42e9feffcee9feffeceafefffcebfeffe2edfeff16eefeffa4effeffb0effeff34f1feffa8f4feffb8f4feffdaf4fefffcf7feffe2f9feff8efcfeff9efcfeffd6fdfeff0002ffff1202ffff260bffff2e14ffff0217ffff1417ffff3617ffffe818fffffa18fffffe18ffffb21affffe81cffff301effffa41fffff2a21ffffec25ffffc227ffffa429ffff182bffff722cffffba2dffffe82effffde38ffff163affffca3cffff843dffff3446ffff6447ffff8649ffff404bffffa04cffff464effff524effff1051ffff5c51ffffce52ffff4855ffff5c57ffff6a5effff0061ffff1063ffff0665fffff266ffff7868ffffde68ffff706afffff86affff886fffff2e72ffffe477ffff4279ffffbe7dfffff47dffff227fffff6686ffff9487ffffc08bffff248effff528fffffaa90ffff1491ffffb493ffff1694ffff7a95ffffa697ffff0499ffffac9affff289bffffa29effff6ea2ffff9ca3ffff20a7ffff62a9ffff9aafffffd8b1ffffdab1ffffb4b2ffff28b6ffff08bdffff1abdffff1ebdffff84befffff6d2ffff16d3ffff5ed6ffffa0d8fffface1ffffb8e1ffff8ae5ffff94e7ffffe2eeffff78f8ffffd8f8ffff24fbffff8076000052860000d29000002aa30000b2ad0000d4b70000a0c40000fef000003ef1000048f100007af10000d8f10000608e0100ca910100f6b00100e8b4010084bb010042bd0100bec001008cc401009cd2010048d60100a8f001009e150200c82402000e250200cc26020066590200
+
+>>>>>>> Feature9-LevelSetup
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1176,7 +1185,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 108.20001}
+
+>>>>>>> Feature9-LevelSetup
     m_SelectedIDs: 06620000
     m_LastClickedID: 25094
     m_ExpandedIDs: ffffffff000000007a5e0000845f00009a6100009c6100009e610000a0610000a2610000a4610000a6610000a8610000aa610000ac610000ae610000b0610000b2610000b4610000b6610000b8610000ba610000bc610000be610000c0610000c2610000c4610000c6610000c8610000ca610000ce610000d2610000e861000086620000d8620000da620000126e0000
