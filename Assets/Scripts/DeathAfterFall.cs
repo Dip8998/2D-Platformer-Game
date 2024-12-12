@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class DeathAfterFall : MonoBehaviour
 {
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+            playerController.PlayerDie();
+
         }
     }
 }

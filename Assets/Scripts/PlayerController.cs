@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public ScoreController scoreController;
     public GameOverController gameOverController;
     public Animator animator;
+    public Camera cam;
     public float speed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck; 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public Image[] healthImages;
     public int health = 3;
+   
     private Rigidbody2D rb;
     private BoxCollider2D playerCollider;
 
@@ -24,8 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 originalColliderOffset, crouchingColliderOffset;
 
     private bool isGrounded;
-    private int jumpCount = 0;
-    private int maxJumps = 1;
+    
 
     private void Awake()
     {
@@ -40,10 +41,6 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (isGrounded)
-        {
-            jumpCount = 0;
-        }
 
         float hSpeed = Input.GetAxisRaw("Horizontal");
         bool jump = Input.GetButtonDown("Jump");
@@ -63,25 +60,19 @@ public class PlayerController : MonoBehaviour
         velocity.x = hSpeed * speed;
         rb.velocity = velocity;
 
-        if (jump && jumpCount < maxJumps)
+        if(jump&&isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            jumpCount++;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
 
-            if(jumpCount == 0)
+            animator.SetBool("Jump", true);
+            if (isGrounded)
             {
-                animator.SetBool("Jump",true);
-                animator.SetBool("DoubleJump", false);
-
-            }
-            else if(jumpCount == 1)
-            {
-                Debug.Log("DoubleJump is pressed");
-                animator.SetBool("DoubleJump", true);
                 animator.SetBool("Jump", false);
             }
+
         }
+
     }
     private void PlayerAnimation(float hSpeed)
     {
@@ -115,6 +106,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("DoubleJump", false);
         }
     }
+
+   
     private void Crouching()
     {
         animator.SetBool("Crouching", true);
@@ -136,7 +129,7 @@ public class PlayerController : MonoBehaviour
     public void PickUpKey()
     {
         Debug.Log("You picked up a key!");
-        scoreController.IncreaseScore(10);
+        scoreController.IncreaseScore(1);
     }
 
     public void ReduceHealth()
@@ -148,9 +141,8 @@ public class PlayerController : MonoBehaviour
             for(int i = 0; i < healthImages.Length; i++)
             {
                 healthImages[i].enabled = i < health;
+               
             }
-
-            animator.SetTrigger("PlayerHurt");
 
             if(health <= 0)
             {
@@ -159,8 +151,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerDie()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            animator.SetTrigger("PlayerHurt");
+        }
+    }
+
+    public void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
+    }
+
+    public void PlayerDie()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
         animator.SetTrigger("PlayerDied");
         this.enabled = false;
         
@@ -169,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         Debug.Log("Game Over");
         gameOverController.ActivateScreen();
