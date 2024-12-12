@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2193524279060244872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03999996, y: 1.81, z: -10}
+  m_LocalPosition: {x: 0.03999996, y: 1.73, z: -10}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -287,14 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80def263a9ef7af4f80f9d3ebd064cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreController: {fileID: 0}
   animator: {fileID: 7153253635362283599}
-  speed: 4
-  jumpForce: 6
+  speed: 6
+  jumpForce: 7
   groundCheck: {fileID: 914681987202888056}
   groundCheckRadius: 0.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  healthImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  health: 3
 --- !u!1 &9173108993209403631
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 9173108993209403631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.13, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
