@@ -4712,40 +4712,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc49794cc535bef4f969645c4eb97b80, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1855243290
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855243287}
-  m_CullTransparentMesh: 1
---- !u!4 &1898791666 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3008079525134901642, guid: 81f71333d99351045a5d64a8cc0e8d09,
-    type: 3}
-  m_PrefabInstance: {fileID: 1694370985}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1969410576
-PrefabInstance:
+
+=======
+
+>>>>>>> Feature8-LevelSelectionSetup
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -4822,7 +4792,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17501259f3033434ebd731aa08cf3f7d, type: 3}
---- !u!1 &1970471192
+
+
+>>>>>>> Feature5-CollectableSetup
+>>>>>>> Feature6-Enemy
+--- !u!1 &2019355936
+>>>>>>> Feature8-LevelSelectionSetup
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22970,8 +22945,16 @@ Rigidbody2D:
 --- !u!19719996 &2143189340
 TilemapCollider2D:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+
+
+>>>>>>> Feature5-CollectableSetup
+  m_SourcePrefab: {fileID: 100100000, guid: 81f71333d99351045a5d64a8cc0e8d09, type: 3}
+--- !u!4 &3520928963693563537 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3008079525134901642, guid: 81f71333d99351045a5d64a8cc0e8d09,
+    type: 3}
+  m_PrefabInstance: {fileID: 3520928963693563536}
+>>>>>>> Feature8-LevelSelectionSetup
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143189334}
   m_Enabled: 1
