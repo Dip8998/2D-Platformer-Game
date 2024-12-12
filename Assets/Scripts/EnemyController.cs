@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
         PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
         if (playerController != null && playerController.enabled)
         {
-            SoundController.Instance.Play(SoundController.Sounds.PlayerHurt);
             playerController.ReduceHealth(false);
         }
     }

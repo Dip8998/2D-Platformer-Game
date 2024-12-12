@@ -20,7 +20,6 @@ public class GameOverController : MonoBehaviour
     {
         gameObject.SetActive(true);
         SoundController.Instance.Play(SoundController.Sounds.GameOver);
-
     }
     private void RestartLevel()
     {

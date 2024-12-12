@@ -34,7 +34,6 @@ public class SoundController : MonoBehaviour
 
     private void SetVolume(float volume)
     {
-        
         soundMusic.volume = volume;
     }
 
@@ -76,10 +75,12 @@ public class SoundController : MonoBehaviour
     private AudioClip GetSoundClip(Sounds sound)
     {
         SoundType item = Array.Find(sounds, i => i.soundTypes == sound);
+
         if(item != null)
         {
             return item.audioClip;
         }
+
         return null;
     }
 
@@ -106,7 +107,9 @@ public class SoundController : MonoBehaviour
         KeyPickUp,
         HealthPickup,
         LevelComplete,
-        GameOver
-        
+        GameOver,
+        ShieldPickUp,
+        DoubleJumpPickUp,
+        ShieldSound 
     }
 }
