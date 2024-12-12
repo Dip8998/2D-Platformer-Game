@@ -8,11 +8,13 @@ public class GameOverController : MonoBehaviour
 {
     public Button restartButton;
     public Button mainMenuButton;
-
+    public Button quitButton;
+    
     private void Awake()
     {
         restartButton.onClick.AddListener(RestartLevel);
         mainMenuButton.onClick.AddListener(MainMenu);
+        quitButton.onClick.AddListener(Quit);
     }
     public void ActivateScreen()
     {
@@ -20,10 +22,15 @@ public class GameOverController : MonoBehaviour
     }
     private void RestartLevel()
     {
-        SceneManager.LoadScene(1);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
     }
     private void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    private void Quit()
+    {
+        Application.Quit();
     }
 }
