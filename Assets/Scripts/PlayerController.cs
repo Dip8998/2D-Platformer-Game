@@ -314,7 +314,7 @@ public class PlayerController : MonoBehaviour
     private void PickUpDoubleJumpItem()
     {
         jumpIcon.SetActive(true);
-        powerUpsScoreController.JumpScoreIncrease(1);
+        powerUpsScoreController.JumpCountForUI(1);
         SoundController.Instance.Play(SoundController.Sounds.DoubleJumpPickUp);
         canDoubleJumpPowerUp = true;
         Debug.Log("Double jump unlcoked");

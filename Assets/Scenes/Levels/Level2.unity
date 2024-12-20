@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.88393337, g: 0.69885814, b: 0.5278717, a: 1}
+  m_IndirectSpecularColor: {r: 0.6914715, g: 0.56520593, b: 0.45479214, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,7 +247,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55450694}
   m_CullTransparentMesh: 1
---- !u!1001 &158880537
+--- !u!1001 &101604426
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -255,6 +255,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1449243892}
     m_Modifications:
+    - target: {fileID: 1440923865040904067, guid: c8eb217105a66bf4b960d17cbf9960e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3746884798509959386, guid: c8eb217105a66bf4b960d17cbf9960e3,
         type: 3}
       propertyPath: m_IsActive
@@ -365,28 +370,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowrUpIcons
       objectReference: {fileID: 0}
-    - target: {fileID: 4394724532229536585, guid: c8eb217105a66bf4b960d17cbf9960e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1440923865040904067, guid: c8eb217105a66bf4b960d17cbf9960e3, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8eb217105a66bf4b960d17cbf9960e3, type: 3}
---- !u!224 &158880538 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4171029509522499056, guid: c8eb217105a66bf4b960d17cbf9960e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 158880537}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &158880539 stripped
+--- !u!114 &101604427 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8259459806603821106, guid: c8eb217105a66bf4b960d17cbf9960e3,
+  m_CorrespondingSourceObject: {fileID: 2897216862934177661, guid: c8eb217105a66bf4b960d17cbf9960e3,
     type: 3}
-  m_PrefabInstance: {fileID: 158880537}
+  m_PrefabInstance: {fileID: 101604426}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -394,12 +387,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &158880540 stripped
+--- !u!224 &101604428 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4171029509522499056, guid: c8eb217105a66bf4b960d17cbf9960e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 101604426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &101604429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3746884798509959386, guid: c8eb217105a66bf4b960d17cbf9960e3,
     type: 3}
-  m_PrefabInstance: {fileID: 158880537}
+  m_PrefabInstance: {fileID: 101604426}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &101604430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1440923865040904067, guid: c8eb217105a66bf4b960d17cbf9960e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 101604426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &101604431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8259459806603821106, guid: c8eb217105a66bf4b960d17cbf9960e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 101604426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &176027517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,12 +434,17 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpIcon
       value: 
-      objectReference: {fileID: 158880540}
+      objectReference: {fileID: 101604429}
     - target: {fileID: 3533977535879870733, guid: 065328b178253c44b93b50701dba9d69,
         type: 3}
       propertyPath: jumpForce
       value: 950
       objectReference: {fileID: 0}
+    - target: {fileID: 3533977535879870733, guid: 065328b178253c44b93b50701dba9d69,
+        type: 3}
+      propertyPath: shieldIcon
+      value: 
+      objectReference: {fileID: 101604430}
     - target: {fileID: 3533977535879870733, guid: 065328b178253c44b93b50701dba9d69,
         type: 3}
       propertyPath: scoreController
@@ -3194,12 +3216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3245,7 +3267,7 @@ RectTransform:
   - {fileID: 1530116112}
   - {fileID: 1098483365}
   - {fileID: 663310999}
-  - {fileID: 158880538}
+  - {fileID: 101604428}
   - {fileID: 2085507910}
   - {fileID: 1825254363}
   - {fileID: 1981680462}
@@ -3268,8 +3290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f46f2889f04e904fa9dec0bc35b3baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpScore: {fileID: 158880539}
-  shieldScore: {fileID: 0}
+  jumpScore: {fileID: 101604431}
+  shieldScore: {fileID: 101604427}
   jScore: 0
   sScore: 0
 --- !u!1 &1509547806

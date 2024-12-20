@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public string[] levels;
     public int[] keysPerLevel;
+    public PlayerController player;
     private static LevelManager instance;
     public static LevelManager Instance { get { return instance; } }
 
@@ -86,7 +87,6 @@ public class LevelManager : MonoBehaviour
 
         if(currentSceneIndex >= 0 && currentSceneIndex < keysPerLevel.Length)
         {
-            PlayerController player = FindAnyObjectByType<PlayerController>();
             if (player != null) 
             {
                 player.requiredKeyCount = keysPerLevel[currentSceneIndex];

@@ -18,7 +18,7 @@ public class PowerUpsScoreController : MonoBehaviour
         ResetShieldUI();
     }
 
-    public void JumpScoreIncrease(int increment)
+    public void JumpCountForUI(int increment)
     {
         jScore += increment;
         ResetJumpUI();
